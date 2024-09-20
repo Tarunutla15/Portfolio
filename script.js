@@ -43,3 +43,24 @@ window.onload = function() {
             });
     });
 };
+
+// Function to apply wave effect to elements with the class 'heading'
+function applyWaveEffectToClass(className) {
+    const elements = document.querySelectorAll(`.${className}`);
+    
+    elements.forEach((textContainer) => {
+        const text = textContainer.innerText; // Get the text inside the element
+        textContainer.innerHTML = ''; // Clear the original text
+        
+        // Loop through each letter and wrap it in a span with a custom --i index
+        for (let i = 0; i < text.length; i++) {
+            const span = document.createElement('span');
+            span.style.setProperty('--i', i); // Set the --i variable for animation delay
+            span.innerText = text[i]; // Assign the current character to the span
+            textContainer.appendChild(span); // Append the span to the text container
+        }
+    });
+}
+
+// Apply the wave effect to elements with the class 'heading'
+applyWaveEffectToClass('heading');
